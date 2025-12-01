@@ -367,67 +367,137 @@ body {
 // ===========================
 
 .skill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom, $primary-dark, $primary);
+  min-height: 100vh;
+  padding: 5rem 5%; // Combinar ambos paddings
+  
   h2 {
-    font-size: $h2-desktop;
+    font-size: $h2-mobile;
     font-family: $font-tittle;
     text-align: center;
     margin-bottom: 2rem;
-    @include mobile {
-      font-size: $h2-mobile;
+    color: $secondary-light;
+    
+    @include desktop {
+      font-size: $h2-desktop;
+    }
   }
-}
-
-.skills-container {
-  display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(2, 1fr);
-  @include desktop {
-    grid-template-columns: repeat(4, 1fr);
+  
+  .skills-container {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
   }
-
+  
   .skill-category {
-    text-align: center;
-    background: rgba(75, 6, 4, 0.315);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(215, 215, 219, 0.158);
-    border-radius: 1.25rem;
-    box-shadow: 0 4px 6px rgba(26, 25, 25, 0.164);
-    transition: all 0.3s ease;
-    padding: 1.5rem;
+    .skill-category-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
 
-    &:hover {
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-      transform: translateY(-5px);
-    }
-
-    h3 {
-      color: $secondary-light;
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      font-family: $font-tittle;
-      @include desktop {
-        font-size: 1.75rem;
+      .skill-gradient-line {
+        height: 0.25rem;
+        flex: 1;
+        border-radius: 9999px;
+        background: linear-gradient(to right, $primary-light, $primary);
       }
-    }
 
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-
-      li {
-        font-size: 1rem;
-        padding: 0.5rem 0;
-        color: rgba($secondary-light, 0.9);
+      .skill-category-title {
+        color: $secondary-light;
+        font-size: 1.5rem;
+        font-family: $font-tittle;
+        font-weight: 700;
+        margin: 0;
+        white-space: nowrap;
 
         @include desktop {
-          font-size: 1.25rem;
+          font-size: 1.75rem;
+        }
+      }
+    }
+    
+    .tech-icons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content:flex-start;
+      gap: 1.25rem;
+      
+      
+      .tech-item {
+        width: 6.875rem; 
+        height: 7.5rem;
+        position: relative;
+        background: rgba($primary-light, 0.2);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba($secondary, 0.2);
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        text-align: center;
+
+        &:hover {
+          background: rgba($primary-light, 0.4);
+          border-color: rgba($secondary, 0.6);
+          box-shadow: 0 0 30px rgba($secondary, 0.2);
+          transform: translateY(-0.5rem);
+
+          .tech-icon {
+            transform: scale(1.25);
+          }
+
+          .tech-name {
+            color: $secondary;
+          }
+
+          &::after {
+            opacity: 1;
+          }
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(135deg, rgba($secondary, 0) 0%, rgba($secondary, 0.05) 50%, rgba($secondary, 0) 100%);
+          border-radius: 0.75rem;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          pointer-events: none;
+        }
+
+        .tech-icon {
+          width: 4rem;
+          height: 4rem;
+          margin: 0 auto 0.75rem;
+          display: block;
+          transition: transform 0.3s ease;
+        }
+
+        .tech-name {
+          font-weight: 600;
+          color: $secondary-light;
+          text-align: center;
+          font-size: 0.875rem;
+          transition: color 0.3s ease;
+          margin-top: 0.5rem;
+
+          @include desktop {
+            font-size: 1rem;
+          }
         }
       }
     }
   }
 }
-}
+
+
+
 
 // ===========================
 // PROJECTS SECTION

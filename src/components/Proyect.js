@@ -15,53 +15,30 @@ const proyects = [
   { 
     title: 'Number Blocks', 
     description: 'Proyecto de la facultad donde implementé un efecto parallax con JavaScript para crear una experiencia visual dinámica.', 
-    url: '#', 
+    url: 'https://tomastourn.github.io/interfaces-grupo-47/TP4/EntregaFinal/NumberBlocks/', 
     img: numberblocks,
     badges: ['HTML','CSS','JavaScript','Parallax'] 
   },
   { 
     title: 'Game Hub', 
     description: 'Sitio web desarrollado como práctica universitaria, donde integré distintos minijuegos aplicando lógica y diseño responsivo.', 
-    url: '#',
+    url: 'https://tomastourn.github.io/interfaces-grupo-47/TP4/EntregaFinal/',
     img: gamehub,
     badges: ['HTML','CSS','JavaScript'] 
   },
   { 
     title: '4 en linea', 
     description: 'Juego de la facultad en el que utilicé Canvas para manejar el renderizado del tablero y la interacción entre jugadores.', 
-    url: '#',
+    url: 'https://tomastourn.github.io/interfaces-grupo-47/TP4/EntregaFinal/game.html',
     img: enLinea,
     badges: ['HTML','CSS','JavaScript','Canvas'] 
   },
 ];
 
 export const Proyect = () => {
-  const cardRefs = useRef([]);
+  
 
-  const handleMouseMove = (e, index) => {
-    const card = cardRefs.current[index];
-    if (!card) return;
-
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-
-    const rotateX = ((y - centerY) / centerY) * -10;
-    const rotateY = ((x - centerX) / centerX) * 10;
-
-    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-  };
-
-  const handleMouseLeave = (index) => {
-    const card = cardRefs.current[index];
-    if (!card) return;
-
-    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-  };
-
+ 
   return (
     <section id="proyects" className='project'>
       <div className="container">
@@ -70,10 +47,7 @@ export const Proyect = () => {
           {proyects.map((proyect, index) => (
             <div 
               className='project-card' 
-              key={proyect.title}
-              ref={(el) => (cardRefs.current[index] = el)}
-              onMouseMove={(e) => handleMouseMove(e, index)}
-              onMouseLeave={() => handleMouseLeave(index)}
+              key={proyect.title} 
             >
               <img src={proyect.img} alt={proyect.title} />
               <div className="content">
@@ -85,7 +59,11 @@ export const Proyect = () => {
                         <span key={tech}>{tech}</span>
                       ))}
                     </div>
-                    <button className='btn'> Ver Proyecto</button>
+                    <button 
+                      className='btn' 
+                      onClick={() => window.open(proyect.url, '_blank')}>
+                      Ver Proyecto
+                    </button>
                   </div>
               </div>
             </div>
