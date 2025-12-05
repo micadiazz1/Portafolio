@@ -297,7 +297,7 @@ body {
   font-size: 2rem;
   font-family: "Noto Sans", sans-serif;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   color: #ede3d5;
 }
 @media (min-width: 768px) {
@@ -339,7 +339,7 @@ body {
 .skill .skill-category .tech-icons {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 1.25rem;
 }
 .skill .skill-category .tech-icons .tech-item {

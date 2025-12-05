@@ -378,7 +378,7 @@ body {
     font-size: $h2-mobile;
     font-family: $font-tittle;
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     color: $secondary-light;
     
     @include desktop {
@@ -424,7 +424,7 @@ body {
     .tech-icons {
       display: flex;
       flex-wrap: wrap;
-      justify-content:flex-start;
+      justify-content:center;
       gap: 1.25rem;
       
       
